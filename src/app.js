@@ -28,9 +28,9 @@ for (var key in courseList)
         (function (name, obj) {
             return function(){
             	console.log(name, obj);
-            	$('<a class="item"></a>').text(name).appendTo(ul)
+            	$('<a class="item"></a>').text(name).appendTo(obj)
             };
-        }(course.name, ul_courseList)),
+        }(course.name, ul)),
         function(){return;})
     // $('<li></li>').text(course.name).appendTo(ul);
 }
