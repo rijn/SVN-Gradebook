@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import $ from 'jquery';
 
-$('<h1>Cats</h1>').appendTo('body');
+$('<h1>Gradebook</h1>').appendTo('body');
 
 /* parse netid from url */
 var url = window.location.href;
