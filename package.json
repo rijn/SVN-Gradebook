@@ -1,0 +1,32 @@
+{
+  "name": "svn-gradebook",
+  "version": "1.0.0",
+  "description": "A more friendly Gradebook for CS 225 / 233 / 241",
+  "main": "",
+  "bin": {
+    "svn-gradebook": "remote.js"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.13.0",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rijn@github.com/rijn/SVN-Gradebook.git"
+  },
+  "author": "rijn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rijn/SVN-Gradebook/issues"
+  },
+  "homepage": "https://github.com/rijn/SVN-Gradebook#readme"
+}
