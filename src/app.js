@@ -8,7 +8,6 @@ var url = window.location.href;
 var re = /\/([a-zA-Z0-9-]*)\/[a-zA-Z.]*$/g;
 var netid = re.exec(url);
 netid = netid ? netid[1] : null;
-netid="yb3";
 console.log(netid);
 
 $('<h3>netid: ' + netid + '<h3>').appendTo('body');
