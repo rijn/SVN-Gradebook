@@ -32,4 +32,10 @@ $(document).ready(function() {
 
     setTimeout(func.updateAll, 1000);
 
+    $('body').on('click', 'a', function() {
+    	console.log("(" + $(this).data('bind') + ")");
+    	eval("(" + $(this).data('bind') + ")");
+    	func.pubsub.emit('data_update');
+    });
+
 });

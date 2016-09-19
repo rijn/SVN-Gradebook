@@ -18,7 +18,7 @@ module.exports =
 			    Home
 			  </a>
     [: for (var i in func.uiData.courseList) { :]
-    	<a class="item">[:=i:]</a>
+    	<a class="item" data-bind="func.uiData.displayPage='[:=i:]'">[:=i:]</a>
     [:}:]
                 </div>
             </div>
@@ -31,6 +31,8 @@ module.exports =
     	<p>[:=func.uiData.status[i]:]</p>
     [:}:]
 </div>
+[:} else {:]
+[:=func.tppl(func.uiData.courseList[func.uiData.displayPage].tpl || '', window.func.uiData):]
 [:}:]
                 </div>
             </div>

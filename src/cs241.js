@@ -10,6 +10,9 @@ module.exports = {
 		/* rerender view */
 		func.pubsub.emit("data_update");
 	},
+	tpl: `
+		test
+	`,
 	grade: {
 		'know_your_tools': {
 			'test1': {
