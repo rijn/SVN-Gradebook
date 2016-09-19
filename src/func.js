@@ -78,8 +78,15 @@ module.exports = {
         return data ? fn(data) : fn;
     },
     uiData: {
-        netid: "",
+        netid: '',
         courseList: {},
+        displayPage: 'Home',
+        status: [],
+    },
+    sendStatus: function(text) {
+    	var timestamp=Math.round(new Date().getTime()/1000);
+    	func.uiData.status.unshift("[" + timestamp + "] " + text);
+    	func.render();
     },
     render: function() {
         $("body").html(func.tppl(tpl, window.func.uiData));
@@ -116,19 +123,24 @@ module.exports = {
         for (var key in courseList) {
             var course = courseList[key];
             func.verify(course.url + func.uiData.netid,
-                (function(name) {
+                (function(obj) {
                     return function() {
-                        func.uiData.courseList[name] = {};
+                        func.uiData.courseList[obj.name] = obj;
                         func.pubsub.emit('data_update');
                     };
-                }(course.name)),
+                }(course)),
                 function() {
                     return;
                 }
             );
         }
     },
-    update: function(name) {
-
+    update: function(obj) {
+    	func.sendStatus("Updating " + obj.name);
+    },
+    updateAll: function() {
+    	for(var key in func.uiData.courseList) {
+    		func.update(func.uiData.courseList[key]);
+    	}
     },
 };

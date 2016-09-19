@@ -13,7 +13,7 @@ func.dynamicLoading.css("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.
 
 /* parse netid from url */
 var url = window.location.href;
-var re = /\/([a-zA-Z0-9-]*)\/[a-zA-Z.]*$/g;
+var re = /\/([a-zA-Z0-9-]*)[\/_]{1}[a-zA-Z.]*$/g;
 var netid = re.exec(url);
 netid = netid ? netid[1] : null;
 
@@ -23,9 +23,13 @@ $(document).ready(function() {
 
     func.render();
 
+    func.sendStatus("UI has been rendered");
+
     /* every time data updated, rerender view */
     func.pubsub.listen('data_update', (function(fn){ return fn; }(func.render)));
 
     func.getAvailableCourse();
+
+    setTimeout(func.updateAll, 1000);
 
 });

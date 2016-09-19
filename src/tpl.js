@@ -23,7 +23,16 @@ module.exports =
                 </div>
             </div>
             <div class="twelve wide column">
-                <div class="ui segment">Content</div>
+                <div class="ui segment">
+[: if(func.uiData.displayPage == 'Home') { :]
+	<button class="ui primary button">Update all repository</button>
+<div class="ui segment">
+    [: for (var i = 0; i < func.uiData.status.length && i < 10; i++) { :]
+    	<p>[:=func.uiData.status[i]:]</p>
+    [:}:]
+</div>
+[:}:]
+                </div>
             </div>
         </div>
     </div>
