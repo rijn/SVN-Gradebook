@@ -1,3 +1,5 @@
+module.exports =
+`
     <div class="ui container" style="padding:2em 0">
         <div class="ui menu">
             <a class="item"><b>Gradebook</b></a>
@@ -23,3 +25,4 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js" charset="utf-8"></script>
+`

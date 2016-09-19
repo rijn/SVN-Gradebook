@@ -1,6 +1,5 @@
 import $ from 'jquery';
-
-var tpl = "";
+import tpl from './tpl.js'
 
 var wu = wu || {};
 wu.tmpl = function(tpl, data) {
@@ -91,16 +90,9 @@ module.exports = {
         }
         return data ? fn(data) : fn;
     },
-    loadTpl: function() {
-    	$.ajax({
-    		url:""
-    	})
-    },
     updateViewer: function() {
-        console.log(this.tppl(tpl, this.uiData));
         $("body").html(this.tppl(tpl, this.uiData));
     },
-
     uiData: {
 
     },

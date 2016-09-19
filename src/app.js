@@ -15,37 +15,28 @@ func.uiData['netid'] = netid;
 
 import courseList from './courseList.js';
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-func.updateViewer();
+    func.updateViewer();
 
-// func.dynamicLoading.ui("https://raw.githubusercontent.com/rijn/SVN-Gradebook/master/ui.html",
-//     (function() {
-//         return function() {
-//             func.updateViewer();
-//         }
-//     }())
-// );
+    const ul = $('<ul></ul>').appendTo('body');
+    const ul_courseList = $('#courseList');
 
-$('<h3>netid: ' + netid + '<h3>').appendTo('body');
+    console.log(courseList)
 
-const ul = $('<ul></ul>').appendTo('body');
-const ul_courseList = $('#courseList');
-
-console.log(courseList)
-
-for (var key in courseList) {
-    var course = courseList[key];
-    func.verify(course.url + netid,
-        (function(name, obj) {
-            return function() {
-                console.log(name, obj);
-                $('<a class="item"></a>').text(name).appendTo(obj)
-            };
-        }(course.name, ul_courseList)),
-        function() {
-            return; }
-    );
-}
+    for (var key in courseList) {
+        var course = courseList[key];
+        func.verify(course.url + netid,
+            (function(name, obj) {
+                return function() {
+                    console.log(name, obj);
+                    $('<a class="item"></a>').text(name).appendTo(obj)
+                };
+            }(course.name, ul_courseList)),
+            function() {
+                return;
+            }
+        );
+    }
 
 });
