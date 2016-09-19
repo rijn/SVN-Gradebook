@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
-    <title>Gradebook</title>
-    <script src="./bin/remote.js" charset="utf-8"></script>
-</head>
-
-<body>
     <div class="ui container" style="padding:2em 0">
         <div class="ui menu">
             <a class="item"><b>Gradebook</b></a>
             <div class="item">A more friendly gradebook for CS 225 / 233 / 241</div>
             <div class="right menu">
-                <div class="item"><i class="user icon"></i></div>
+                <div class="item"><i class="user icon"></i>[:=netid:]</span></div>
                 <a class="item" href="https://github.com/rijn/SVN-Gradebook">Star me on Github</a>
             </div>
         </div>
@@ -35,9 +22,4 @@
             </div>
         </div>
     </div>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js" charset="utf-8"></script>
-    <!-- <script src="https://rawgit.com/rijn/SVN-Gradebook/master/bin/remote.js" charset="utf-8"></script> -->
-</body>
-
-</html>
