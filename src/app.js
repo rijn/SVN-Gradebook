@@ -1,5 +1,9 @@
 import 'babel-polyfill';
 import $ from 'jquery';
+import func from './func.js';
+
+func.dynamicLoading.css("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css");
+func.dynamicLoading.ui("https://raw.githubusercontent.com/rijn/SVN-Gradebook/master/ui.html");
 
 $('<h1>Gradebook</h1>').appendTo('body');
 
@@ -16,7 +20,7 @@ const ul = $('<ul></ul>').appendTo('body');
 const ul_courseList = $('#courseList');
 
 import courseList from './courseList.js';
-import func from './func.js';
+
 
 console.log(courseList)
 
