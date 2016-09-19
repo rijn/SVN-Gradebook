@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import tpl from './tpl.js'
-
+import tpl from './tpl.js';
+import courseList from './courseList.js';
 
 module.exports = {
     verify: function(url, success, fail) {
@@ -111,5 +111,24 @@ module.exports = {
                 fn.apply(this, arguments);
             }
         },
+    },
+    getAvailableCourse: function() {
+        for (var key in courseList) {
+            var course = courseList[key];
+            func.verify(course.url + func.uiData.netid,
+                (function(name) {
+                    return function() {
+                        func.uiData.courseList[name] = {};
+                        func.pubsub.emit('data_update');
+                    };
+                }(course.name)),
+                function() {
+                    return;
+                }
+            );
+        }
+    },
+    update: function(name) {
+
     },
 };
