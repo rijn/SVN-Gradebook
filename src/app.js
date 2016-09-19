@@ -33,7 +33,7 @@ for (var key in courseList)
             	console.log(name, obj);
             	$('<a class="item"></a>').text(name).appendTo(obj)
             };
-        }(course.name, ul)),
+        }(course.name, ul_courseList)),
         function(){return;})
     // $('<li></li>').text(course.name).appendTo(ul);
 }
