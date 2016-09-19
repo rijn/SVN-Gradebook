@@ -1,6 +1,13 @@
 import 'babel-polyfill';
 import $ from 'jquery';
+window.$ = $;
+window.jQuery = $;
 import func from './func.js';
+window.func = func;
+
+func.pubsub.listen('tpl_render', function() {
+    console.log('tpl_render');
+});
 
 func.dynamicLoading.css("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css");
 
@@ -10,14 +17,18 @@ var re = /\/([a-zA-Z0-9-]*)\/[a-zA-Z.]*$/g;
 var netid = re.exec(url);
 netid = netid ? netid[1] : null;
 
-console.log(func);
+netid = 'yb3';
+
 func.uiData['netid'] = netid;
 
 import courseList from './courseList.js';
 
 $(document).ready(function() {
 
-    func.updateViewer();
+    func.render();
+
+    /* every time data updated, rerender view */
+    func.pubsub.listen('data_update', (function(fn){ return fn; }(func.render)));
 
     const ul = $('<ul></ul>').appendTo('body');
     const ul_courseList = $('#courseList');
@@ -27,12 +38,12 @@ $(document).ready(function() {
     for (var key in courseList) {
         var course = courseList[key];
         func.verify(course.url + netid,
-            (function(name, obj) {
+            (function(name) {
                 return function() {
-                    console.log(name, obj);
-                    $('<a class="item"></a>').text(name).appendTo(obj)
+                    func.uiData.courseList[name] = {};
+                    func.pubsub.emit('data_update');
                 };
-            }(course.name, ul_courseList)),
+            }(course.name)),
             function() {
                 return;
             }

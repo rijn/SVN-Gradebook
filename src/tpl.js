@@ -17,6 +17,9 @@ module.exports =
                     <a class="active item">
 			    Home
 			  </a>
+    [: for (var i in func.uiData.courseList) { :]
+    	<a class="item">[:=i:]</a>
+    [:}:]
                 </div>
             </div>
             <div class="twelve wide column">

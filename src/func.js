@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import tpl from './tpl.js'
 
+
 module.exports = {
     verify: function(url, success, fail) {
         console.log(url);
@@ -76,11 +77,39 @@ module.exports = {
         }
         return data ? fn(data) : fn;
     },
-    updateViewer: function() {
-        $("body").html(this.tppl(tpl, this.uiData));
-    },
     uiData: {
-
+        netid: "",
+        courseList: {},
     },
+    render: function() {
+        $("body").html(func.tppl(tpl, window.func.uiData));
+        func.pubsub.emit('tpl_render');
+    },
+    pubsub: {
+        client: {
 
-}
+        },
+        listen: function(key, fn) {
+            if (!this.client[key]) {
+                this.client[key] = [];
+            }
+            this.client[key].push(fn);
+        },
+        clear: function(key) {
+            this.client[key] = [];
+        },
+        emit: function() {
+            var key = [].shift.apply(arguments);
+            var fns = this.client[key];
+
+            if (!fns || fns.length === 0) {
+                return false;
+            }
+
+            for (var i = 0, fn; fn = fns[i++];) {
+                console.log(fn);
+                fn.apply(this, arguments);
+            }
+        },
+    },
+};
