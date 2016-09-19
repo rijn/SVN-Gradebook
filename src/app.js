@@ -3,7 +3,6 @@ import $ from 'jquery';
 import func from './func.js';
 
 func.dynamicLoading.css("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css");
-func.dynamicLoading.ui("https://raw.githubusercontent.com/rijn/SVN-Gradebook/master/ui.html");
 
 $('<h1>Gradebook</h1>').appendTo('body');
 
@@ -12,7 +11,17 @@ var url = window.location.href;
 var re = /\/([a-zA-Z0-9-]*)\/[a-zA-Z.]*$/g;
 var netid = re.exec(url);
 netid = netid ? netid[1] : null;
-console.log(netid);
+
+console.log(func);
+func.uiData['netid'] = netid;
+
+func.dynamicLoading.ui("https://raw.githubusercontent.com/rijn/SVN-Gradebook/master/ui.html",
+	(function() {
+		return function() {
+			func.updateViewer();
+		}
+	}())
+);
 
 $('<h3>netid: ' + netid + '<h3>').appendTo('body');
 

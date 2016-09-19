@@ -39,18 +39,30 @@ module.exports = {
             script.type = 'text/javascript';
             head.appendChild(script);
         },
-        ui: function(url) {
-        	$.ajax({
-        		url: url,
-        		success: function(data) {
-        			$("body").append(data);
-        		}
-        	});
+        ui: function(url, func) {
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    $("body").append(data);
+                    func && func();
+                }
+            });
         },
     },
 
     get: function(url, ret) {},
     refresh: function(id) {},
-    updateViewer: function() {},
+    updateViewer: function(data) {
+    	if(!data) data = this.uiData;
+        $("span").each(function() {
+            if ($(this).data("ui")) {
+                $(this).html(data[$(this).data("ui")]);
+            }
+        })
+    },
+
+    uiData: {
+
+    },
 
 }
