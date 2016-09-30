@@ -137,6 +137,7 @@ module.exports = {
     },
     update: function(obj) {
     	func.sendStatus("Updating " + obj.name);
+        obj && obj.update && obj.update();
     },
     updateAll: function() {
     	for(var key in func.uiData.courseList) {

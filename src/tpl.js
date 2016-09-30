@@ -32,7 +32,7 @@ module.exports =
     [:}:]
 </div>
 [:} else {:]
-[:=func.tppl(func.uiData.courseList[func.uiData.displayPage].tpl || '', window.func.uiData):]
+[:=func.tppl(func.uiData.courseList[func.uiData.displayPage].tpl || '', func.uiData.courseList[func.uiData.displayPage].data):]
 [:}:]
                 </div>
             </div>
